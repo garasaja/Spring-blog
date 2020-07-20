@@ -4,9 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cos.blog.repository.UserRepository">
 
-	<!-- <select id="findAll" resultType="com.cos.blog.model.User">
-		select * from user order by id desc
-	</select> -->
-
+	<insert id="save">
+		INSERT INTO user(username,password,email,createDate) values(#{username},#{password},#{email},now())
+	</insert>
+	<!-- <select id="findAll" resultType="com.cos.blog.model.User"> select * 
+		from user order by id desc </select> -->
+	<select id="login" resultType="com.cos.blog.model.User">
+		SELECT id,username,email,profile,createDate FROM user WHERE username = #{username} and password = #{password}
+	</select>
 
 </mapper>
