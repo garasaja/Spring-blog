@@ -53,9 +53,14 @@ let index = {
 			contentType:"application/json; charset=utf-8",
 			dataType:"json"
 		}).done(function(resp){
-			
+			if(resp.statusCode==1) {
 				alert("로그인이 성공되었습니다.");
 				location.href="/";
+			} else {
+				alert("아이디와 패스워드를 다시 입력하세요");
+				console.log(resp);
+			}
+				
 		
 		}).fail(function(error){
 			console.log(error);
